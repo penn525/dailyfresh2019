@@ -42,8 +42,19 @@ $(function () {
 			$('#user_name').next().show();
 			error_name = true;
 		} else {
-			$('#user_name').next().hide();
-			error_name = false;
+			$.get("/user/user_exist/", {uname: $("#user_name").val()},
+				function (data) {
+					if (data.count == 1) { //用户名已存在
+						$('#user_name').next().html('用户名已存在, 请重新输入')
+						$('#user_name').next().show()
+						error_name = true()
+					} else { // 用户名不存在
+						$('#user_name').next().hide();
+						error_name = false;						
+					}
+				}
+			);
+
 		}
 	}
 

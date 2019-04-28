@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from hashlib import sha1
 from df_user.models import UserInfo
+from django.http.response import JsonResponse
 
 
 def register(request):
@@ -45,3 +46,26 @@ def register_handle(request):
 
     # 4. 跳转到登录页面
     return redirect('/user/login/')
+
+
+def user_exist(request):
+    """
+    检查用户名是否存在
+    """
+    uname = request.GET.get('uname')
+    count = UserInfo.objects.filter(uname=uname).count()
+    return JsonResponse({'count': count})
+
+
+def login(request):
+    """
+    跳转到用户登录页面
+    """
+    return render(request, 'df_user/login.html')
+
+
+def login_handle(request):
+    """
+    用户登录处理
+    """
+    return
