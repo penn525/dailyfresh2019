@@ -15,11 +15,11 @@
 	<div class="r_con fr">
 		<div class="reg_title clearfix">
 			<h1>用户注册</h1>
-			<a href="/user/login/">登录</a>
+			<a href="{% url 'user:login' %}">登录</a>
 			{% comment %} 相对与项目的地址 {% endcomment %}
 		</div>
 		<div class="reg_form clearfix">
-			<form action="/user/register_handle/" method="post">
+			<form action="{% url 'user:register' %}" method="post">
 				{% csrf_token %} {# post方法提交的表单必须要标注 #}
 				<ul>
 					<li>

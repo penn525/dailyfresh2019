@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from hashlib import sha1
 from df_user.models import UserInfo
 from django.http.response import JsonResponse
+from django.urls import reverse
 
 
 def register(request):
@@ -10,7 +11,7 @@ def register(request):
     :param request:
     :return:
     """
-    return render(request, 'df_user/register.html')
+    return render(request, 'df_user/register.html', {'title': '用户注册'})
 
 
 def register_handle(request):
@@ -27,7 +28,8 @@ def register_handle(request):
     # 判断两次密码是否相同
     # 如果不同, 重定向到registe请求
     if upwd != upwd2:
-        return redirect('/user/register/') 
+        #return redirect('/user/register/') 
+        return redirect(reverse('user:register')) 
 
     # 如果相同
     # 1. 对密码进行加密
@@ -45,7 +47,8 @@ def register_handle(request):
     user.save()
 
     # 4. 跳转到登录页面
-    return redirect('/user/login/')
+    # return redirect('/user/login/')
+    return redirect(reverse('user:login'))
 
 
 def user_exist(request):
@@ -61,7 +64,7 @@ def login(request):
     """
     跳转到用户登录页面
     """
-    return render(request, 'df_user/login.html')
+    return render(request, 'df_user/login.html', {'title': '用户登录'})
 
 
 def login_handle(request):
