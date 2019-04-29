@@ -19,7 +19,7 @@
 			{% comment %} 相对与项目的地址 {% endcomment %}
 		</div>
 		<div class="reg_form clearfix">
-			<form action="{% url 'user:register' %}" method="post">
+			<form action="{% url 'user:register_handle' %}" method="post">
 				{% csrf_token %} {# post方法提交的表单必须要标注 #}
 				<ul>
 					<li>
