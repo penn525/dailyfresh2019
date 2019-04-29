@@ -117,11 +117,12 @@ def info(request):
     跳转到用户中心页面
     """
     user_id = request.session['user_id']
-    user_name = request.session['user_name']
+    # user_name = request.session['user_name']
     user = UserInfo.objects.get(pk=user_id)
     user_phone = user.uphone
     user_address = user.udetail_address
-    context = {'title': '用户中心', 'uname': user_name, 'uphone': user_phone, 'uadress': user_address}
+    user_email = user.uemail
+    context = {'title': '用户中心', 'uemail': user_email, 'uphone': user_phone, 'uadress': user_address}
     print(context)
     return render(request, 'df_user/user_center_info.html', context)
 
@@ -130,11 +131,13 @@ def site(request):
     """
     跳转到用户中心地址页面
     """
-    user_id = request.session['user_id']
-    user_name = request.session['user_name']
-    user = UserInfo.objects.get(pk=user_id)
-    user_phone = user.uphone
-    user_address = user.udetail_address
-    user_postcode = user.upostcode
-    context = {'title': '用户中心', 'uname': user_name, 'uphone': user_phone, 'uadress': user_address, 'upostcode': user_postcode}
+    user = UserInfo.objects.get(id=request.session['user_id'])
+    if 'POST' == request.method: # 是修改地址请求
+        post = request.POST
+        user.uemail = post.get('user_name')
+        user.uphone = post.get('user_phone')
+        user.udetail_address = post.get('user_address')
+        user.upostcode = post.get('user_postcode')
+        user.save()
+    context = {'title': '用户中心', 'user': user}
     return render(request, 'df_user/user_center_site.html', context)
