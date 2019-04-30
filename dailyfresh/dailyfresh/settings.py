@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'df_user',
+    'df_goods',
 ]
 
 MIDDLEWARE = [
@@ -118,6 +120,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+# 富文本编辑器tinymce默认设置
+TINYMCE_DEFAULT_CONFIG = { 
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -127,3 +136,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# 开发阶段上传文件的目录
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+# 部署后的上传文件目录 NGINX
+# MEDIA_ROOT = 'var/www/dailyfresh/static'
