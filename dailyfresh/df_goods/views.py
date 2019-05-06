@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from df_goods.models import TypeInfo, GoodsInfo
+from django.core.paginator import Paginator
 
 def index(request):
     """
@@ -46,10 +47,37 @@ def detail(request):
     context = {'guster_page': 1, 'title': '商品详情'}
     return render(request, 'df_goods/detail.html', context)
 
-def list(request):
+def list(request, type_id, page_num, sort):
     """
     商品列表
+    :param request:
+    :param type: 商品类型id
+    :param page: 当前页码
+    :param order: 排序字段
+    :return :
     """
-    context = {'guster_page': 1, 'title': '商品列表'}
+    # 获取当前分类
+    selected_type = TypeInfo.objects.get(pk=int(type_id))
+    # 获取该分类当前页所有商品
+    goods = selected_type.goodsinfo_set
+    # 推荐商品
+    recommend_goods = goods.order_by('-id')[0:2]
+    # 根据排序方式查询商品
+    if '2' == sort: # 价格
+        goods_list = goods.order_by('-gprice')
+    elif '3' == sort: # 点击量, 人气
+        goods_list = goods.order_by('-gclick')
+    else:
+        goods_list = goods.order_by('-id')
+    
+    paginator = Paginator(goods_list, 10)
+    page = paginator.page(int(page_num))
+
+    # 分页数据
+    context = {'guster_page': 1, 'title': '商品列表', 'type': selected_type, 
+        'recommend_goods': recommend_goods, 
+        'paginator': paginator,
+        'page': page,
+        'sort': sort}
     return render(request, 'df_goods/list.html', context)
 
