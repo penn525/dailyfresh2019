@@ -40,11 +40,27 @@ def index(request):
     return render(request, 'df_goods/index.html', context)
 
 
-def detail(request):
+def detail(request, goods_id):
     """
     商品详情
+    :param request:
+    :param goods_id: 商品id
+    :return :
     """
-    context = {'guster_page': 1, 'title': '商品详情'}
+    # 查询商品详情
+    goods = GoodsInfo.objects.get(pk=int(goods_id))
+    # 点击量+1
+    goods.gclick += 1
+    goods.save()
+    # 获取商品的类型
+    goods_type = goods.gtype
+    # 推荐商品
+    recommend_goods = goods_type.goodsinfo_set.order_by('-id')[0:2]
+    # print(goods_type)
+    context = {'guster_page': 1, 'title': '商品详情', 
+        'type': goods_type, 
+        'goods': goods,
+        'recommend_goods': recommend_goods}
     return render(request, 'df_goods/detail.html', context)
 
 def list(request, type_id, page_num, sort):
@@ -74,7 +90,8 @@ def list(request, type_id, page_num, sort):
     page = paginator.page(int(page_num))
 
     # 分页数据
-    context = {'guster_page': 1, 'title': '商品列表', 'type': selected_type, 
+    context = {'guster_page': 1, 'title': '商品列表', 
+        'type': selected_type, 
         'recommend_goods': recommend_goods, 
         'paginator': paginator,
         'page': page,

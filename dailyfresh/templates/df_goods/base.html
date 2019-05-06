@@ -29,7 +29,11 @@
 <div class="breadcrumb">
 	<a href="#">全部分类</a>
 	<span>></span>
-	<a href="#">{{ type.ttitle|default:'无' }}</a>
+	<a href="#">{{ type.ttitle|default_if_none:'无' }}</a>
+	{% if goods %}
+	<span>></span>
+	<a href="#">{{ goods.gtitle }}</a>
+	{% endif %}
 </div>
 
 {% block detail %} {% endblock detail %} {% comment %} # 详情页面 {% endcomment %}
