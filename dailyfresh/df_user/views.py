@@ -116,7 +116,11 @@ def info(request):
     """
     跳转到用户中心页面
     """
-    user_id = request.session['user_id']
+    try:
+        user_id = request.session['user_id']
+    except KeyError as e:
+        return redirect(reverse('user:login'))
+
     # user_name = request.session['user_name']
     user = UserInfo.objects.get(pk=user_id)
     user_phone = user.uphone
@@ -131,7 +135,11 @@ def site(request):
     """
     跳转到用户中心地址页面
     """
-    user = UserInfo.objects.get(id=request.session['user_id'])
+    try:
+        user = UserInfo.objects.get(id=request.session['user_id'])
+    except KeyError as e:
+        return redirect(reverse('user:login'))
+    
     if 'POST' == request.method: # 是修改地址请求
         post = request.POST
         user.uemail = post.get('user_name')

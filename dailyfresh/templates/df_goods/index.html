@@ -50,10 +50,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{% for g in goods0_click %}
-				<a href="/{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
+				<a href="/detail_{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr" id="fruit_more">查看更多 ></a>
+			<a href="/list_{{ types.0.id }}_1_1/" class="goods_more fr" id="fruit_more">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -61,8 +61,8 @@
 			<ul class="goods_list fl">
 			{% for g in goods0_id %}
 				<li>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="/detail_{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="/detail_{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
 					<div class="prize">¥ {{ g.gprice }}</div>
 				</li>			
 			{% endfor %}
@@ -76,10 +76,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{% for g in goods1_click %}
-				<a href="/{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
+				<a href="/detail_{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
 				{% endfor %}				
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="/list_{{ types.1.id }}_1_1/" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -87,8 +87,8 @@
 			<ul class="goods_list fl">
 				{% for g in goods1_id %}
 				<li>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="/detail_{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="/detail_{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
 					<div class="prize">¥ {{ g.gprice }}</div>
 				</li>			
 			{% endfor %}
@@ -102,10 +102,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{% for g in goods2_click %}
-				<a href="/{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
+				<a href="/detail_{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="/list_{{ types.2.id }}_1_1/" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -113,8 +113,8 @@
 			<ul class="goods_list fl">
 			{% for g in goods2_id %}
 				<li>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="/detail_{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="/detail_{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
 					<div class="prize">¥ {{ g.gprice }}</div>
 				</li>			
 			{% endfor %}
@@ -128,10 +128,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{% for g in goods3_click %}
-				<a href="/{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
+				<a href="/detail_{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="/list_{{ types.3.id }}_1_1/" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -139,8 +139,8 @@
 			<ul class="goods_list fl">
 			{% for g in goods3_id %}
 				<li>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="/detail_{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="/detail_{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
 					<div class="prize">¥ {{ g.gprice }}</div>
 				</li>			
 			{% endfor %}
@@ -154,10 +154,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{% for g in goods4_click %}
-				<a href="/{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
+				<a href="/detail_{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="/list_{{ types.4.id }}_1_1/" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -165,8 +165,8 @@
 			<ul class="goods_list fl">
 			{% for g in goods4_id %}
 				<li>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="/detail_{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="/detail_{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
 					<div class="prize">¥ {{ g.gprice }}</div>
 				</li>			
 			{% endfor %}
@@ -180,10 +180,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{% for g in goods5_click %}
-				<a href="/{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
+				<a href="/detail_{{ g.id }}/">{{ g.gtitle|slice:':5' }}...</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="/list_{{ types.5.id }}_1_1/" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -191,8 +191,8 @@
 			<ul class="goods_list fl">
 			{% for g in goods5_id %}
 				<li>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="/detail_{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="/detail_{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
 					<div class="prize">¥ {{ g.gprice }}</div>
 				</li>			
 			{% endfor %}
