@@ -33,12 +33,11 @@ if
 	</div>
 </div>
 <script>
-	if (1 == {{error_name}}) {
+	if (1 == {{ error_name|default:0 }}) {
 		$('.user_error').html('用户名错误').show()
 	} 
-	if (1 == {{error_pwd}}) {
+	if (1 == {{ error_pwd|default:0 }}) {
 		$('.pwd_error').html('密码错误').show()
-	} 
-	
+	} 	
 </script>
 {% endblock body %}

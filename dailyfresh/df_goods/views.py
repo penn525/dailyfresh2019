@@ -29,7 +29,6 @@ def index(request):
     goods5_id = goods5.order_by('-id')[0:4]
     goods5_click = goods5.order_by('-gclick')[0:4]
 
-    print(goods0_id)
     context = {'guster_page': 1, 'title': '首页', 'types': type_list, 
         'goods0_id': goods0_id, 'goods0_click': goods0_click,
         'goods1_id': goods1_id, 'goods1_click': goods1_click,

@@ -1,0 +1,157 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALLOWED_HOSTS	dailyfresh/settings.py	/^ALLOWED_HOSTS = []$/;"	v
+AUTH_PASSWORD_VALIDATORS	dailyfresh/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+AppConfig	df_goods/apps.py	/^from django.apps import AppConfig$/;"	i
+AppConfig	df_user/apps.py	/^from django.apps import AppConfig$/;"	i
+BASE_DIR	dailyfresh/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+DATABASES	dailyfresh/settings.py	/^DATABASES = {$/;"	v
+DEBUG	dailyfresh/settings.py	/^DEBUG = True$/;"	v
+DfGoodsConfig	df_goods/apps.py	/^class DfGoodsConfig(AppConfig):$/;"	c
+DfUserConfig	df_user/apps.py	/^class DfUserConfig(AppConfig):$/;"	c
+GoodsInfo	df_goods/admin.py	/^from df_goods.models import TypeInfo, GoodsInfo$/;"	i
+GoodsInfo	df_goods/models.py	/^class GoodsInfo(models.Model):$/;"	c
+GoodsInfo	df_goods/views.py	/^from df_goods.models import TypeInfo, GoodsInfo$/;"	i
+GoodsInfoAdmin	df_goods/admin.py	/^class GoodsInfoAdmin(admin.ModelAdmin):$/;"	c
+HTMLField	df_goods/models.py	/^from tinymce.models import HTMLField # 富文本编辑器, 需要安装$/;"	i
+INSTALLED_APPS	dailyfresh/settings.py	/^INSTALLED_APPS = [$/;"	v
+JsonResponse	df_user/views.py	/^from django.http.response import JsonResponse$/;"	i
+LANGUAGE_CODE	dailyfresh/settings.py	/^LANGUAGE_CODE = 'zh-Hans'$/;"	v
+MEDIA_ROOT	dailyfresh/settings.py	/^MEDIA_ROOT = os.path.join(BASE_DIR, 'static')$/;"	v
+MIDDLEWARE	dailyfresh/settings.py	/^MIDDLEWARE = [$/;"	v
+Migration	df_goods/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	df_user/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	df_user/migrations/0002_auto_20190430_1527.py	/^class Migration(migrations.Migration):$/;"	c
+Paginator	df_goods/views.py	/^from django.core.paginator import Paginator$/;"	i
+ROOT_URLCONF	dailyfresh/settings.py	/^ROOT_URLCONF = 'dailyfresh.urls'$/;"	v
+SECRET_KEY	dailyfresh/settings.py	/^SECRET_KEY = 'vgf^dg8!-2z)&di7_)z_v9f_y@+&wbn8@#1g8127dmaj(g9zfl'$/;"	v
+STATICFILES_DIRS	dailyfresh/settings.py	/^STATICFILES_DIRS = [$/;"	v
+STATIC_URL	dailyfresh/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+TEMPLATES	dailyfresh/settings.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	dailyfresh/settings.py	/^TIME_ZONE = 'Asia\/Shanghai'$/;"	v
+TINYMCE_DEFAULT_CONFIG	dailyfresh/settings.py	/^TINYMCE_DEFAULT_CONFIG = { $/;"	v
+TestCase	df_goods/tests.py	/^from django.test import TestCase$/;"	i
+TypeInfo	df_goods/admin.py	/^from df_goods.models import TypeInfo, GoodsInfo$/;"	i
+TypeInfo	df_goods/models.py	/^class TypeInfo(models.Model): $/;"	c
+TypeInfo	df_goods/views.py	/^from df_goods.models import TypeInfo, GoodsInfo$/;"	i
+TypeInfoAdmin	df_goods/admin.py	/^class TypeInfoAdmin(admin.ModelAdmin):$/;"	c
+USE_I18N	dailyfresh/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	dailyfresh/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	dailyfresh/settings.py	/^USE_TZ = True$/;"	v
+UserInfo	df_user/models.py	/^class UserInfo(models.Model):$/;"	c
+UserInfo	df_user/views.py	/^from df_user.models import UserInfo$/;"	i
+WSGI_APPLICATION	dailyfresh/settings.py	/^WSGI_APPLICATION = 'dailyfresh.wsgi.application'$/;"	v
+__str__	df_goods/models.py	/^    def __str__(self):$/;"	m	class:GoodsInfo	file:
+__str__	df_goods/models.py	/^    def __str__(self):$/;"	m	class:TypeInfo	file:
+admin	dailyfresh/urls.py	/^from django.contrib import admin$/;"	i
+admin	df_goods/admin.py	/^from django.contrib import admin$/;"	i
+admin	df_user/admin.py	/^from django.contrib import admin$/;"	i
+application	dailyfresh/wsgi.py	/^application = get_wsgi_application()$/;"	v
+db	df_goods/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+decode	static/js/jquery.cookie.js	/^	function decode(s) {$/;"	f
+deletion	df_goods/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+dependencies	df_goods/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	df_user/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	df_user/migrations/0002_auto_20190430_1527.py	/^    dependencies = [$/;"	v	class:Migration
+detail	df_goods/views.py	/^def detail(request, goods_id):$/;"	f
+django	df_goods/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+django	manage.py	/^            import django$/;"	i
+encode	static/js/jquery.cookie.js	/^	function encode(s) {$/;"	f
+execute_from_command_line	manage.py	/^        from django.core.management import execute_from_command_line$/;"	i
+field	df_goods/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='df_goods.TypeInfo'),$/;"	v	class:Migration
+field	df_user/migrations/0002_auto_20190430_1527.py	/^            field=models.CharField(default='', max_length=100),$/;"	v	class:Migration
+field	df_user/migrations/0002_auto_20190430_1527.py	/^            field=models.CharField(default='', max_length=11),$/;"	v	class:Migration
+field	df_user/migrations/0002_auto_20190430_1527.py	/^            field=models.CharField(default='', max_length=30),$/;"	v	class:Migration
+field	df_user/migrations/0002_auto_20190430_1527.py	/^            field=models.CharField(default='', max_length=6),$/;"	v	class:Migration
+fields	df_goods/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+fields	df_user/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+gclick	df_goods/models.py	/^    gclick = models.IntegerField(u"点击量", default=0)$/;"	v	class:GoodsInfo
+gdetail	df_goods/models.py	/^    gdetail = HTMLField() # 富文本编辑器$/;"	v	class:GoodsInfo
+get_wsgi_application	dailyfresh/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+gintroduction	df_goods/models.py	/^    gintroduction = models.CharField(u"简介", max_length=100, default='无简介')$/;"	v	class:GoodsInfo
+gpicture	df_goods/models.py	/^    gpicture = models.ImageField(u"图片", upload_to='df_goods', height_field=None, width_field=None, max_length=None)$/;"	v	class:GoodsInfo
+gprice	df_goods/models.py	/^    gprice = models.DecimalField(u"单价", max_digits=5, decimal_places=2, default=50.10)$/;"	v	class:GoodsInfo
+gstock	df_goods/models.py	/^    gstock = models.IntegerField(u"库存量", default=500)$/;"	v	class:GoodsInfo
+gtitle	df_goods/models.py	/^    gtitle = models.CharField(u"名称", max_length=20)$/;"	v	class:GoodsInfo
+gtype	df_goods/models.py	/^    gtype = models.ForeignKey(TypeInfo)$/;"	v	class:GoodsInfo
+gunit	df_goods/models.py	/^    gunit = models.CharField(u"计量单位", max_length=20, default='500g')$/;"	v	class:GoodsInfo
+include	dailyfresh/urls.py	/^from django.conf.urls import url, include$/;"	i
+index	df_goods/views.py	/^def index(request):$/;"	f
+info	df_user/views.py	/^def info(request):$/;"	f
+initial	df_goods/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+initial	df_user/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+isDelete	df_goods/models.py	/^    isDelete = models.BooleanField(u"是否删除", default=False)$/;"	v	class:GoodsInfo
+isDelete	df_goods/models.py	/^    isDelete = models.BooleanField(u"是否删除", default=False)$/;"	v	class:TypeInfo
+list	df_goods/views.py	/^def list(request, type_id, page_num, sort):$/;"	f
+list_display	df_goods/admin.py	/^    list_display = ['id', 'gtitle', 'gprice', 'gunit', 'gclick', 'gstock', 'gdetail', 'gtype']$/;"	v	class:GoodsInfoAdmin
+list_display	df_goods/admin.py	/^    list_display = ['id', 'ttitle']$/;"	v	class:TypeInfoAdmin
+list_per_page	df_goods/admin.py	/^    list_per_page = 15$/;"	v	class:GoodsInfoAdmin
+login	df_user/user_decorator.py	/^def login(func):$/;"	f
+login	df_user/views.py	/^def login(request):$/;"	f
+login_fun	df_user/user_decorator.py	/^    def login_fun(request, *args, **kwargs):$/;"	f	function:login
+login_handle	df_user/views.py	/^def login_handle(request):$/;"	f
+migrations	df_goods/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+migrations	df_user/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+migrations	df_user/migrations/0002_auto_20190430_1527.py	/^from django.db import migrations, models$/;"	i
+model_name	df_goods/migrations/0001_initial.py	/^            model_name='goodsinfo',$/;"	v	class:Migration
+model_name	df_user/migrations/0002_auto_20190430_1527.py	/^            model_name='userinfo',$/;"	v	class:Migration
+models	df_goods/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+models	df_goods/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+models	df_goods/migrations/0001_initial.py	/^import tinymce.models$/;"	i
+models	df_goods/models.py	/^from django.db import models $/;"	i
+models	df_user/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+models	df_user/migrations/0002_auto_20190430_1527.py	/^from django.db import migrations, models$/;"	i
+models	df_user/models.py	/^from django.db import models$/;"	i
+name	df_goods/apps.py	/^    name = 'df_goods'$/;"	v	class:DfGoodsConfig
+name	df_goods/migrations/0001_initial.py	/^            name='GoodsInfo',$/;"	v	class:Migration
+name	df_goods/migrations/0001_initial.py	/^            name='TypeInfo',$/;"	v	class:Migration
+name	df_goods/migrations/0001_initial.py	/^            name='gtype',$/;"	v	class:Migration
+name	df_user/apps.py	/^    name = 'df_user'$/;"	v	class:DfUserConfig
+name	df_user/migrations/0001_initial.py	/^            name='UserInfo',$/;"	v	class:Migration
+name	df_user/migrations/0002_auto_20190430_1527.py	/^            name='uconsignee_address',$/;"	v	class:Migration
+name	df_user/migrations/0002_auto_20190430_1527.py	/^            name='udetail_address',$/;"	v	class:Migration
+name	df_user/migrations/0002_auto_20190430_1527.py	/^            name='uphone',$/;"	v	class:Migration
+name	df_user/migrations/0002_auto_20190430_1527.py	/^            name='upostcode',$/;"	v	class:Migration
+operations	df_goods/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+operations	df_user/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+operations	df_user/migrations/0002_auto_20190430_1527.py	/^    operations = [$/;"	v	class:Migration
+os	dailyfresh/settings.py	/^import os$/;"	i
+os	dailyfresh/wsgi.py	/^import os$/;"	i
+os	manage.py	/^import os$/;"	i
+pymysql	dailyfresh/__init__.py	/^import pymysql$/;"	i
+redirect	df_user/user_decorator.py	/^from django.shortcuts import redirect$/;"	i
+redirect	df_user/views.py	/^from django.shortcuts import render, redirect$/;"	i
+register	df_user/views.py	/^def register(request):$/;"	f
+register_handle	df_user/views.py	/^def register_handle(request):$/;"	f
+render	df_goods/views.py	/^from django.shortcuts import render$/;"	i
+render	df_user/views.py	/^from django.shortcuts import render, redirect$/;"	i
+reverse	df_goods/views.py	/^from django.urls import reverse$/;"	i
+reverse	df_user/user_decorator.py	/^from django.urls import reverse$/;"	i
+reverse	df_user/views.py	/^from django.urls import reverse$/;"	i
+sha1	df_user/views.py	/^from hashlib import sha1$/;"	i
+site	df_user/views.py	/^def site(request):$/;"	f
+stringifyCookieValue	static/js/jquery.cookie.js	/^	function stringifyCookieValue(value) {$/;"	f
+sys	manage.py	/^import sys$/;"	i
+tinymce	df_goods/migrations/0001_initial.py	/^import tinymce.models$/;"	i
+ttitle	df_goods/models.py	/^    ttitle = models.CharField(u"分类标题", max_length=20)$/;"	v	class:TypeInfo
+uconsignee_address	df_user/models.py	/^    uconsignee_address = models.CharField(max_length=30, default='')$/;"	v	class:UserInfo
+udetail_address	df_user/models.py	/^    udetail_address = models.CharField(max_length=100, default='')$/;"	v	class:UserInfo
+uemail	df_user/models.py	/^    uemail = models.CharField(max_length=30)$/;"	v	class:UserInfo
+uname	df_user/models.py	/^    uname = models.CharField(max_length=20)$/;"	v	class:UserInfo
+unicode_literals	df_goods/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	df_user/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	df_user/migrations/0002_auto_20190430_1527.py	/^from __future__ import unicode_literals$/;"	i
+uphone	df_user/models.py	/^    uphone = models.CharField(max_length=11, default='')$/;"	v	class:UserInfo
+upostcode	df_user/models.py	/^    upostcode = models.CharField(max_length=6, default='')$/;"	v	class:UserInfo
+upwd	df_user/models.py	/^    upwd = models.CharField(max_length=40)$/;"	v	class:UserInfo
+url	dailyfresh/urls.py	/^from django.conf.urls import url, include$/;"	i
+url	df_goods/urls.py	/^from django.conf.urls import url$/;"	i
+url	df_user/urls.py	/^from django.conf.urls import url$/;"	i
+urlpatterns	dailyfresh/urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	df_goods/urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	df_user/urls.py	/^urlpatterns = [$/;"	v
+user_exist	df_user/views.py	/^def user_exist(request):$/;"	f

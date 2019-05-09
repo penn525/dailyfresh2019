@@ -3,6 +3,7 @@ from hashlib import sha1
 from df_user.models import UserInfo
 from django.http.response import JsonResponse
 from django.urls import reverse
+from df_user.user_decorator import login_check
 
 
 def register(request):
@@ -65,7 +66,8 @@ def login(request):
     跳转到用户登录页面
     """
     uname = request.COOKIES.get('uname', '')
-    context = {'title': '用户登录', 'uname': uname}
+    upwd = request.COOKIES.get('upwd','')
+    context = {'title': '用户登录', 'uname': uname, 'upwd': upwd}
     return render(request, 'df_user/login.html', context)
 
 
@@ -112,33 +114,29 @@ def login_handle(request):
     return red_login
 
 
+@login_check
 def info(request):
     """
     跳转到用户中心页面
     """
-    try:
-        user_id = request.session['user_id']
-    except KeyError as e:
-        return redirect(reverse('user:login'))
-
+    user_id = request.session['user_id']
     # user_name = request.session['user_name']
     user = UserInfo.objects.get(pk=user_id)
-    user_phone = user.uphone
-    user_address = user.udetail_address
-    user_email = user.uemail
-    context = {'title': '用户中心', 'uemail': user_email, 'uphone': user_phone, 'uadress': user_address, 'user_page': 1}
+    # user_phone = user.uphone
+    # user_address = user.udetail_address
+    # user_email = user.uemail
+    # context = {'title': '用户中心', 'user': user, 'uemail': user_email, 'uphone': user_phone, 'uadress': user_address, 'user_page': 1}
+    context = {'title': '用户中心', 'user': user, 'user_page': 1}
     print(context)
     return render(request, 'df_user/user_center_info.html', context)
 
 
+@login_check
 def site(request):
     """
     跳转到用户中心地址页面
     """
-    try:
-        user = UserInfo.objects.get(id=request.session['user_id'])
-    except KeyError as e:
-        return redirect(reverse('user:login'))
+    user = UserInfo.objects.get(id=request.session['user_id'])
     
     if 'POST' == request.method: # 是修改地址请求
         post = request.POST
