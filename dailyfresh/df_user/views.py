@@ -67,7 +67,7 @@ def login(request):
     """
     uname = request.COOKIES.get('uname', '')
     upwd = request.COOKIES.get('upwd','')
-    context = {'title': '用户登录', 'uname': uname, 'upwd': upwd}
+    context = {'title': '用户登录', 'uname': uname, 'upwd': upwd, 'error_name': 0, 'error_pwd': 0}
     return render(request, 'df_user/login.html', context)
 
 
@@ -98,20 +98,31 @@ def login_handle(request):
         context = {'title': '用户登录', 'error_name': 0, 'error_pwd': 1, 'uname': uname, 'upwd': upwd}
         return render(request, 'df_user/login.html', context)
 
-    # 5. 用户名, 密码都正确, 跳转到用户中心
-    red_login = redirect(reverse('user:info'))
+    # 5. 用户名, 密码都正确, 从哪来到哪去
+    url = request.COOKIES.get('url', '/')
+    print(url)
+    red = redirect(url)
     if remeber_name != 0:
         # 记住用户名
-        red_login.set_cookie('uname', uname)
+        red.set_cookie('uname', uname)
     else:
         # 忘记用户名
-        # del red_login.cookies['uname'] 不能这么删除, 因为可能没有这个key
-        red_login.delete_cookie('uname') # 删除cookie, 没有key值不会有错误
-        # red_login.set_cookie('uname', '', max_age= -1) 
+        # del red.cookies['uname'] 不能这么删除, 因为可能没有这个key
+        red.delete_cookie('uname') # 删除cookie, 没有key值不会有错误
+        # red.set_cookie('uname', '', max_age= -1) 
     
     request.session['user_id'] = users[0].id # 储存用户id, 方便后面查找
     request.session['user_name'] = users[0].uname # 储存用户名, 因为后面使用的地方多
-    return red_login
+    return red
+
+
+def logout(request):
+    """
+    退出登录, 清除登录状态, 并返回登录页面
+    """
+    request.session['user_id'] = ''
+    request.session['user_name'] = ''
+    return redirect(reverse('goods:index'))
 
 
 @login_check
@@ -147,3 +158,5 @@ def site(request):
         user.save()
     context = {'title': '用户中心', 'user': user, 'user_page': 1}
     return render(request, 'df_user/user_center_site.html', context)
+
+

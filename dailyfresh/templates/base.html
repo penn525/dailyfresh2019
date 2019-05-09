@@ -6,12 +6,12 @@
 	<div class="header">
 		<div class="welcome fl">欢迎来到天天生鲜!</div>
 		<div class="fr">
-			{% if request.COOKIES.uname %} {# 如果有用户 #}
+			{% if request.session.user_id %} {# 如果有用户 #}
 				
-				<div class="fl">
-					欢迎您：<em>{{ request.COOKIES.uname }}</em>
+				<div class="login_info fl">
+					欢迎您：<em>{{ request.session.user_name }}</em>
 					<span>|</span>
-					<a href="{% url 'user:login' %}">退出</a>
+					<a href="{% url 'user:logout' %}">退出</a>
 				</div>
 			{% else %} {# 如果没有用户 #}
 				<div class="login_btn fl">
