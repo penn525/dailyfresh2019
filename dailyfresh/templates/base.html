@@ -6,10 +6,10 @@
 	<div class="header">
 		<div class="welcome fl">欢迎来到天天生鲜!</div>
 		<div class="fr">
-			{% if not uname.is_anoymous %} {# 如果有用户 #}
+			{% if request.COOKIES.uname %} {# 如果有用户 #}
 				
 				<div class="fl">
-					欢迎您：<em>{{ uname }}</em>
+					欢迎您：<em>{{ request.COOKIES.uname }}</em>
 					<span>|</span>
 					<a href="{% url 'user:login' %}">退出</a>
 				</div>
