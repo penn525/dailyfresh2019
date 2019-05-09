@@ -4,6 +4,7 @@ from df_user.models import UserInfo
 from django.http.response import JsonResponse
 from django.urls import reverse
 from df_user.user_decorator import login_check
+from df_goods.models import GoodsInfo
 
 
 def register(request):
@@ -137,9 +138,16 @@ def info(request):
     # user_phone = user.uphone
     # user_address = user.udetail_address
     # user_email = user.uemail
+    
+    # 展示最近浏览的商品
+    browse_goods_ids = eval(request.COOKIES.get('browse_goods_ids', '[]'))
+    browse_goods_list = []
+    for browse_goods_id in browse_goods_ids:
+        browse_goods_list.append(GoodsInfo.objects.get(id=int(browse_goods_id)))
+    
     # context = {'title': '用户中心', 'user': user, 'uemail': user_email, 'uphone': user_phone, 'uadress': user_address, 'user_page': 1}
-    context = {'title': '用户中心', 'user': user, 'user_page': 1}
-    print(context)
+    context = {'title': '用户中心', 'user': user, 'user_page': 1, 'browse_goods_list': browse_goods_list}
+
     return render(request, 'df_user/user_center_info.html', context)
 
 

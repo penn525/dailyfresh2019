@@ -56,11 +56,25 @@ def detail(request, goods_id):
     # 推荐商品
     recommend_goods = goods_type.goodsinfo_set.order_by('-id')[0:2]
     # print(goods_type)
+
     context = {'guster_page': 1, 'title': '商品详情', 
         'type': goods_type, 
         'goods': goods,
         'recommend_goods': recommend_goods}
-    return render(request, 'df_goods/detail.html', context)
+
+    # 最近浏览的商品id列表(取5个)
+    browse_goods_ids = eval(request.COOKIES.get('browse_goods_ids', '[]'))
+    if goods_id in browse_goods_ids: # 已经记录的, 删除现有的, 插入到第一个,没有记录的直接插入到第一个
+        browse_goods_ids.remove(goods_id)
+    browse_goods_ids.insert(0, goods_id)
+    if len(browse_goods_ids) >= 6:
+        browse_goods_ids.pop()
+    
+    response = render(request, 'df_goods/detail.html', context)
+    response.set_cookie('browse_goods_ids', browse_goods_ids)
+    # print(browse_goods_ids)
+    return response
+
 
 def list(request, type_id, page_num, sort):
     """
