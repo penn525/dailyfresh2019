@@ -120,8 +120,9 @@ def logout(request):
     """
     退出登录, 清除登录状态, 并返回登录页面
     """
-    request.session['user_id'] = ''
-    request.session['user_name'] = ''
+    # request.session['user_id'] = ''
+    # request.session['user_name'] = ''
+    request.session.flush() # 清除所有session缓存
     return redirect(reverse('goods:index'))
 
 
