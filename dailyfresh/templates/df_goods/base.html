@@ -45,8 +45,8 @@
 			<ul>
 			{% for g in recommend_goods %}
 				<li>
-					<a href="/{{ g.id }}/"><img src="/static/{{ g.gpicture }}"></a>
-					<h4><a href="/{{ g.id }}/">{{ g.gtitle }}</a></h4>
+					<a href="{% url 'goods:detail' g.id %}"><img src="/static/{{ g.gpicture }}"></a>
+					<h4><a href="{% url 'goods:detail' g.id %}">{{ g.gtitle }}</a></h4>
 					<div class="prize">￥{{ g.gprice }}</div>
 				</li>
 			{% endfor %}

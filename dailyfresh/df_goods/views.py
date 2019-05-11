@@ -76,7 +76,7 @@ def detail(request, goods_id):
     return response
 
 
-def list(request, type_id, page_num, sort):
+def list_(request, type_id, page_num, sort):
     """
     商品列表
     :param request:

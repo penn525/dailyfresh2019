@@ -1,34 +1,29 @@
 $(function () {
 
     $('.add').click(function (e) { 
-        e.preventDefault();
-        $('.num_show').val(parseInt($('.num_show').val()) + 1)
-        calculate_fee()
+        e.preventDefault()
+        var $input_select = $(this).siblings('input:first')
+        $input_select.val(parseInt($input_select.val()) + 1)
+        calculate_fee(this)
     });
 
     $('.minus').click(function (e) { 
         e.preventDefault();
-        var cur_num = $('.num_show').val()
+        var $input_select = $(this).siblings('input:first')
+        var cur_num = $input_select.val()
         if ('1' != cur_num) {
-            $('.num_show').val(parseInt($('.num_show').val()) - 1)
-            calculate_fee()
+            $input_select.val(parseInt($input_select.val()) - 1)
+            calculate_fee(this)
         }
     });
-
-    // 立即购买点击事件
-    $('#buy_now, #add_cart').click(function (e) { 
-        e.preventDefault();
-        add2cart($(this).attr('id'))
-    });
-
 
     /**
      * 数量变化时计算费用
      */
-    function calculate_fee() {
-        var price = parseFloat($('.show_pirze em').text())
-        var goods_num = parseInt($('.num_show').val())
-        $('.total em').text((price * goods_num).toFixed(2) + "元")
+    function calculate_fee(th) {
+        var price = parseFloat($(th).parents('ul').find('.col05 em').text())
+        var goods_num = parseInt($(th).siblings('input.num_show').val())
+        $(th).parents('ul').find('.col07').text((price * goods_num).toFixed(2) + "元")
     }
 
     function add2cart(btn_id) {

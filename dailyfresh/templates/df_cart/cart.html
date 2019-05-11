@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block head %}
+<script src="/static/js/cart.js"></script>
+{% endblock head %}
 
 {% block content %}
 
@@ -11,41 +14,26 @@
 		<li class="col05">小计</li>
 		<li class="col06">操作</li>
 	</ul>
-	<ul class="cart_list_td clearfix">
-		<li class="col01"><input type="checkbox" name="" checked></li>
-		<li class="col02"><img src="../static/images/goods/goods012.jpg"></li>
-		<li class="col03">奇异果<br><em>25.80元/500g</em></li>
-		<li class="col04">500g</li>
-		<li class="col05">25.80元</li>
-		<li class="col06">
-			<div class="num_add">
-				<a href="javascript:;" class="add fl">+</a>
-				<input type="text" class="num_show fl" value="1">	
-				<a href="javascript:;" class="minus fl">-</a>	
-			</div>
-		</li>
-		<li class="col07">25.80元</li>
-		<li class="col08"><a href="javascript:;">删除</a></li>
-	</ul>
-
-	<ul class="cart_list_td clearfix">
-		<li class="col01"><input type="checkbox" name="" checked></li>
-		<li class="col02"><img src="../static/images/goods/goods003.jpg"></li>
-		<li class="col03">大兴大棚草莓<br><em>16.80元/500g</em></li>
-		<li class="col04">500g</li>
-		<li class="col05">16.80元</li>
-		<li class="col06">
-			<div class="num_add">
-				<a href="javascript:;" class="add fl">+</a>
-				<input type="text" class="num_show fl" value="1">	
-				<a href="javascript:;" class="minus fl">-</a>	
-			</div>
-		</li>
-		<li class="col07">16.80元</li>
-		<li class="col08"><a href="javascript:;">删除</a></li>
-	</ul>
+	{% for cart in carts %}
+		{% widthratio cart.goods.gprice 100 cart.count as total_fee %}
+		<ul class="cart_list_td clearfix">
+			<li class="col01"><input type="checkbox" name="" checked></li>
+			<li class="col02"><img src="/static/{{ cart.goods.gpicture }}"></li>
+			<li class="col03">{{ cart.goods.gtitle }}<br><em>{{ cart.goods.gprice }}元/{{ cart.goods.gunit }}</em></li>
+			<li class="col04">{{ cart.goods.gunit }}</li>
+			<li class="col05"><em>{{ cart.goods.gprice }}</em>元</li>
+			<li class="col06">
+				<div class="num_add">
+					<a href="javascript:;" class="add fl">+</a>
+					<input type="text" class="num_show fl" value="{{ cart.count }}">	
+					<a href="javascript:;" class="minus fl">-</a>	
+				</div>
+			</li>
+			<li class="col07">{{ total_fee|floatformat:2 }}元</li>
+			<li class="col08"><a href="javascript:;">删除</a></li>
+		</ul>
+	{% endfor %}
 	
-
 	<ul class="settlements">
 		<li class="col01"><input type="checkbox" name="" checked=""></li>
 		<li class="col02">全选</li>
