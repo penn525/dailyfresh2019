@@ -5,6 +5,7 @@ from django.http.response import JsonResponse
 from django.urls import reverse
 from df_user.user_decorator import login_check
 from df_goods.models import GoodsInfo
+from df_cart.models import CartInfo
 
 
 def register(request):
@@ -133,12 +134,9 @@ def info(request):
     跳转到用户中心页面
     """
     user_id = request.session['user_id']
-    # user_name = request.session['user_name']
     user = UserInfo.objects.get(pk=user_id)
-    # user_phone = user.uphone
-    # user_address = user.udetail_address
-    # user_email = user.uemail
-    
+    count = CartInfo.objects.filter(user_id=user_id).count()
+
     # 展示最近浏览的商品
     browse_goods_ids = eval(request.COOKIES.get('browse_goods_ids', '[]'))
     browse_goods_list = []
@@ -146,7 +144,8 @@ def info(request):
         browse_goods_list.append(GoodsInfo.objects.get(id=int(browse_goods_id)))
     
     # context = {'title': '用户中心', 'user': user, 'uemail': user_email, 'uphone': user_phone, 'uadress': user_address, 'user_page': 1}
-    context = {'title': '用户中心', 'user': user, 'user_page': 1, 'browse_goods_list': browse_goods_list}
+    context = {'title': '用户中心', 'user': user, 'user_page': 1, 
+        'browse_goods_list': browse_goods_list, 'count': count}
 
     return render(request, 'df_user/user_center_info.html', context)
 
@@ -156,7 +155,9 @@ def site(request):
     """
     跳转到用户中心地址页面
     """
-    user = UserInfo.objects.get(id=request.session['user_id'])
+    user_id = request.session['user_id']
+    user = UserInfo.objects.get(id=user_id)
+    count = CartInfo.objects.filter(user_id=user_id).count()
     
     if 'POST' == request.method: # 是修改地址请求
         post = request.POST
@@ -165,7 +166,7 @@ def site(request):
         user.udetail_address = post.get('user_address')
         user.upostcode = post.get('user_postcode')
         user.save()
-    context = {'title': '用户中心', 'user': user, 'user_page': 1}
+    context = {'title': '用户中心', 'user': user, 'user_page': 1, 'count': count}
     return render(request, 'df_user/user_center_site.html', context)
 
 

@@ -9,6 +9,7 @@ $(function () {
         $input_select.val(parseInt($input_select.val()) + 1)
         calculate_fee($(this).parents('ul'))
         total_fee()
+        edit($(this).next())
     });
 
     // 点击减号, 数量减一
@@ -20,6 +21,7 @@ $(function () {
             $input_select.val(parseInt($input_select.val()) - 1)
             calculate_fee($(this).parents('ul'))
             total_fee()
+            edit($(this).prev())
         }
     });
 
@@ -32,8 +34,8 @@ $(function () {
     $('.num_show').change(function (e) { 
         e.preventDefault();
         calculate_fee($(this).parents('ul.cart_list_td'))
-        total_fee()
         edit(this)
+        total_fee()
     });
 
 
@@ -47,10 +49,10 @@ $(function () {
      */
     function total_fee() {
         var total = 0.00
-        $.each($('li.col07 em'), function (indexInArray, valueOfElement) {
+        $.each($('li.col07 em'), function(indexInArray, valueOfElement) {
             total = total + parseFloat($(valueOfElement).text())
         });
-        $('.col03 em').text(total)
+        $('#total_fee').text(total.toFixed(2))
     }
 
     /**
@@ -85,6 +87,9 @@ $(function () {
             dataType: "json",
             success: function (response) {
                 $(ul_element).remove()
+                $('.count').each(function(inedx) { 
+                    $(this).text(response.count)
+                 })
                 total_fee()
             }
         });
@@ -92,7 +97,7 @@ $(function () {
 
     /**
      * 修改购物车商品数量
-     * @param {x} input_element 
+     * @param {x} input_element input输入框
      */
     function edit(input_element) {
         var gid = $(input_element).parents('ul').find('#goods_id').text()
@@ -101,7 +106,7 @@ $(function () {
             url: "/cart/edit/" + gid + "/" + count + "/",
             dataType: "json",
             success: function (response) {
-                // $('.total_count em').text(response.total_count)
+ 
             }
         });
     }

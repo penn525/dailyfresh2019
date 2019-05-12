@@ -12,7 +12,8 @@ def cart(request):
     """
     uid = request.session['user_id']
     carts = CartInfo.objects.filter(user_id=uid)
-    content = {'title': '购物车', 'cart_page': 1, 'carts': carts}
+    count = carts.count()
+    content = {'title': '购物车', 'cart_page': 1, 'carts': carts, 'count': count}
     return render(request, 'df_cart/cart.html', content)
 
 
@@ -43,7 +44,7 @@ def add2cart(request, gid, count=1):
     # 如果是ajax请求则返回json, 否则转向购物车
     if request.is_ajax():
         total_count = CartInfo.objects.filter(user_id=uid).count()
-        return JsonResponse({'total_count': total_count})
+        return JsonResponse({'count': total_count})
     else:
         return redirect(reverse('cart:cart'))
 
@@ -57,8 +58,8 @@ def del_goods(request, gid):
     uid = request.session['user_id']
     gid = int(gid)
     del_result = CartInfo.objects.filter(user_id=uid, goods_id=gid).delete()
-    print(del_result)
-    return JsonResponse({'data': del_result})
+    count = CartInfo.objects.filter(user_id=uid).count()
+    return JsonResponse({'data': del_result, 'count': count})
     
 
 @login_check
@@ -74,8 +75,7 @@ def edit(request, gid, count):
     cart = CartInfo.objects.filter(user_id=uid, goods_id=gid)[0]
     cart.count = count
     cart.save()
-    total_count = CartInfo.objects.filter(user_id=uid).count()
-    print(total_count)
-    return JsonResponse({'total_count': total_count})
+    count = CartInfo.objects.filter(user_id=uid).count()
+    return JsonResponse({'count': count})
 
     
