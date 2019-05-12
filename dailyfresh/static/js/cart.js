@@ -98,6 +98,10 @@ $(function () {
      * @param {*} ul_element 
      */
     function del_goods(ul_element) {
+        del = confirm('确定要删除该商品吗?')
+        if (!del) {
+            return
+        }
         var gid = $(ul_element).find('#goods_id').text()
         $.ajax({
             url: "/cart/delete/" + gid + "/",
@@ -115,7 +119,7 @@ $(function () {
                 $('.count').each(function(inedx) { 
                     $(this).text(response.count)
                  })
-                 
+
                 total_fee()
             }
         });
@@ -131,6 +135,10 @@ $(function () {
     function edit(input_element) {
         var gid = $(input_element).parents('ul').find('#goods_id').text()
         var count = $(input_element).val()
+        if (parseInt(count) < 0) {
+            alert("商品数量不能小于0")
+            return
+        }
         $.ajax({
             url: "/cart/edit/" + gid + "/" + count + "/",
             dataType: "json",
