@@ -3,6 +3,23 @@ $(function () {
     // 初始化页面, 计算费用
     calculate_init() 
 
+    // 全选, 全消
+    $('#check_all').click(function(){
+        state = $(this).prop('checked')
+        $(':checkbox:not("#check_all")').prop('checked', state)
+    })
+
+    // 选择
+    $(':checkbox:not("#check_all")').click(function(){
+        if ($(this).prop('checked')) {
+            if ($(':checked').length + 1 == $(':checkbox').length) {
+                $('#check_all').prop('checked', true)
+            }
+        } else {
+            $('#check_all').prop('checked', false)
+        }
+    })
+
     // 点击加号, 数量加一
     $('.add').click(function (e) { 
         var $input_select = $(this).siblings('input:first')
@@ -86,13 +103,25 @@ $(function () {
             url: "/cart/delete/" + gid + "/",
             dataType: "json",
             success: function (response) {
+
                 $(ul_element).remove()
+
+                if ($(':checked').length + 1 == $(':checkbox').length) {
+                    $('#check_all').prop('checked', true)
+                } else {
+                    $('#check_all').prop('checked', false)
+                }
+
                 $('.count').each(function(inedx) { 
                     $(this).text(response.count)
                  })
+                 
                 total_fee()
             }
         });
+
+        // 需要重新判断是否全选
+        
     }
 
     /**
