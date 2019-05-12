@@ -46,3 +46,36 @@ def add2cart(request, gid, count=1):
         return JsonResponse({'total_count': total_count})
     else:
         return redirect(reverse('cart:cart'))
+
+
+@login_check
+def del_goods(request, gid):
+    """
+    删除商品
+    :param gid: 商品id
+    """
+    uid = request.session['user_id']
+    gid = int(gid)
+    del_result = CartInfo.objects.filter(user_id=uid, goods_id=gid).delete()
+    print(del_result)
+    return JsonResponse({'data': del_result})
+    
+
+@login_check
+def edit(request, gid, count):
+    """
+    修改商品数量
+    :param gid: 商品id
+    :param count: 修改的商品数量
+    """
+    uid = request.session['user_id']
+    gid = int(gid)
+    count = int(count)
+    cart = CartInfo.objects.filter(user_id=uid, goods_id=gid)[0]
+    cart.count = count
+    cart.save()
+    total_count = CartInfo.objects.filter(user_id=uid).count()
+    print(total_count)
+    return JsonResponse({'total_count': total_count})
+
+    

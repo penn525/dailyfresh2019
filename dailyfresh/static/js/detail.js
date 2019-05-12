@@ -42,7 +42,7 @@ $(function () {
                 url: "/cart/add2cart/" + goods_id + "/" + count + "/",
                 dataType: "json",
                 success: function (response) {
-                    alert('ok')
+                    
                 }
             });
         }
