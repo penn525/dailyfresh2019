@@ -28,7 +28,7 @@
 				<span>|</span>
 				<a href="{% url 'cart:cart' %}">我的购物车</a>
 				<span>|</span>
-				<a href="javascript:;">我的订单</a>
+				<a href="/order/detail/">我的订单</a>
 			</div>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 		<h3>用户中心</h3>
 		<ul>
 			<li><a href="{% url 'user:info' %}" class="active">· 个人信息</a></li>
-			<li><a href="javascript:;">· 全部订单</a></li>
+			<li><a href="/order/detail/">· 全部订单</a></li>
 			<li><a href="{% url 'user:site' %}">· 收货地址</a></li>
 		</ul>
 	</div>
@@ -73,7 +73,7 @@
 {% if cart_page == 1 %}
 	<div class="search_bar clearfix">
 		<a href="{% url 'goods:index' %}" class="logo fl"><img src="/static/images/logo.png"></a>
-		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;购物车</div>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;{{ title }}</div>
 		<div class="search_con fr">
 			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
 			<input type="button" class="input_btn fr" name="" value="搜索">

@@ -61,6 +61,11 @@ $(function () {
         del_goods($(this).parents('ul'))
     }); 
 
+    $('#order').click(function (e) { 
+        e.preventDefault();
+        order()
+    });
+
     /**
      * 计算总费用
      */
@@ -102,7 +107,7 @@ $(function () {
         if (!del) {
             return
         }
-        var gid = $(ul_element).find('#goods_id').text()
+        var gid = $(ul_element).attr('id')
         $.ajax({
             url: "/cart/delete/" + gid + "/",
             dataType: "json",
@@ -133,7 +138,7 @@ $(function () {
      * @param {x} input_element input输入框
      */
     function edit(input_element) {
-        var gid = $(input_element).parents('ul').find('#goods_id').text()
+        var gid = $(input_element).parents('ul').attr('id')
         var count = $(input_element).val()
         if (parseInt(count) < 0) {
             alert("商品数量不能小于0")
@@ -148,6 +153,25 @@ $(function () {
         });
     }
 
+    /**
+     * 结算购物车
+     */
+    function order() {
+        goods = []
+        $(':checked:not("#check_all")').each(function(){
+            goods.push($(this).parents('ul').attr('id'))
+        })
+        url = "/order/?"
+        if (!goods.length) {
+            alert('请选择需要结算的商品')
+            return
+        }
+        goods.forEach(element => {
+            url += "goods_id[]=" + element + "&"
+        });
 
+        window.location.href = url // 页面跳转
+
+    }
 
 });

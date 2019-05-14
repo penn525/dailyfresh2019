@@ -18,8 +18,7 @@
 	{% for cart in carts %}
 		{% comment %} {% widthratio cart.goods.gprice|floatformat:2 1.00 cart.count as total_fee %} {% endcomment %}
 		
-		<ul class="cart_list_td clearfix">
-			<div id="goods_id" hidden>{{ cart.goods.id }}</div>
+		<ul id={{ cart.goods.id }} class="cart_list_td clearfix">
 			<li class="col01"><input type="checkbox" name="" checked></li>
 			<li class="col02"><img src="/static/{{ cart.goods.gpicture }}"></li>
 			<li class="col03">{{ cart.goods.gtitle }}<br><em>{{ cart.goods.gprice|floatformat:2 }}元/{{ cart.goods.gunit }}</em></li>
@@ -41,7 +40,7 @@
 		<li class="col01"><input id="check_all" type="checkbox" name="" checked></li>
 		<li class="col02">全选</li>
 		<li class="col03">合计(不含运费)：<span>¥</span><em id="total_fee"></em><br>共计<b class="count">{{ count }}</b>件商品</li>
-		<li class="col04"><a href="place_order.html">去结算</a></li>
+		<li class="col04"><a href="javascript:;" id="order">去结算</a></li>
 	</ul>
 
 {% endblock content %}
