@@ -48,9 +48,9 @@
 	<div class="left_menu_con clearfix">
 		<h3>用户中心</h3>
 		<ul>
-			<li><a href="{% url 'user:info' %}" class="active">· 个人信息</a></li>
-			<li><a href="/order/detail/">· 全部订单</a></li>
-			<li><a href="{% url 'user:site' %}">· 收货地址</a></li>
+			<li><a href="{% url 'user:info' %}"  {% if left == 1 %}class="active"{% endif %} >· 个人信息</a></li>
+			<li><a href="/order/detail/" {% if left == 2 %}class="active"{% endif %}>· 全部订单</a></li>
+			<li><a href="{% url 'user:site' %}" {% if left == 3 %}class="active"{% endif %}>· 收货地址</a></li>
 		</ul>
 	</div>
 

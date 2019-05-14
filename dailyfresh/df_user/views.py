@@ -145,7 +145,7 @@ def info(request):
     
     # context = {'title': '用户中心', 'user': user, 'uemail': user_email, 'uphone': user_phone, 'uadress': user_address, 'user_page': 1}
     context = {'title': '用户中心', 'user': user, 'user_page': 1, 
-        'browse_goods_list': browse_goods_list, 'count': count}
+        'browse_goods_list': browse_goods_list, 'count': count, 'left': 1}
 
     return render(request, 'df_user/user_center_info.html', context)
 
@@ -166,7 +166,7 @@ def site(request):
         user.udetail_address = post.get('user_address')
         user.upostcode = post.get('user_postcode')
         user.save()
-    context = {'title': '用户中心', 'user': user, 'user_page': 1, 'count': count}
+    context = {'title': '用户中心', 'user': user, 'user_page': 1, 'count': count, 'left': 3}
     return render(request, 'df_user/user_center_site.html', context)
 
 

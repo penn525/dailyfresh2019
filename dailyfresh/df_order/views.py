@@ -96,5 +96,5 @@ def order_detail(request):
     """
     订单详情页面
     """
-    content = {'title': '全部订单', 'user_page': 1}
+    content = {'title': '全部订单', 'user_page': 1, 'left': 2}
     return render(request, 'df_order/user_center_order.html', content)
