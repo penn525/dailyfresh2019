@@ -9,6 +9,7 @@ from df_goods.models import GoodsInfo
 from df_cart.models import CartInfo
 from df_order.models import OrderInfo, OrderDetailInfo
 from django.db import transaction  # 事务
+from django.core.paginator import Paginator
 
 @login_check
 def order(request):
@@ -92,9 +93,30 @@ def order_submit_handle(request):
 
 
 @login_check
-def order_detail(request):
+def order_detail(request, page_num='1'):
     """
     订单详情页面
+    1. 根据user_id, 查询订单信息
     """
-    content = {'title': '全部订单', 'user_page': 1, 'left': 2}
+    uid = request.session['user_id']
+    order_list = OrderInfo.objects.filter(user_id=int(uid)).order_by("-odate")
+
+    # 获取订单的商品详情信息
+    for order in order_list:
+        order_skus = OrderDetailInfo.objects.filter(order=order)
+
+        # 遍历order_sku 计算商品的小计
+        for order_sku in order_skus:
+            amount = order_sku.count * order_sku.price
+            # 动态给order_sku 增加属性, 不会保存到数据库, 但可以通过属性范文
+            order_sku.amount = amount 
+        
+        order.order_skus = order_skus
+
+    pagin = Paginator(order_list, 2)
+    page = pagin.page(int(page_num))
+    # print(page)
+
+    content = {'title': '全部订单', 'user_page': 1, 'left': 2, 
+        'pagin': pagin, 'page': page}
     return render(request, 'df_order/user_center_order.html', content)

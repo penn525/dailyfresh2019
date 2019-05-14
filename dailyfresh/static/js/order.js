@@ -35,7 +35,7 @@ $(function () {
 
                         setTimeout(() => {
                             $('.popup_con').fadeOut('fast', function () { 
-                                window.location.href = '/order/detail/'
+                                window.location.href = '/order/detail/1/'
                              });
                         }, 3000);
                         
