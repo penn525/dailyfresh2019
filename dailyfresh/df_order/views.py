@@ -110,8 +110,9 @@ def order_detail(request, page_num='1'):
             amount = order_sku.count * order_sku.price
             # 动态给order_sku 增加属性, 不会保存到数据库, 但可以通过属性范文
             order_sku.amount = amount 
-        
+        # 动态添加属性
         order.order_skus = order_skus
+        # order.save() 不会报错, 只会更新
 
     pagin = Paginator(order_list, 2)
     page = pagin.page(int(page_num))
