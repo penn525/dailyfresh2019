@@ -11,6 +11,7 @@ from df_order.models import OrderInfo, OrderDetailInfo
 from django.db import transaction  # 事务
 from django.core.paginator import Paginator
 
+
 @login_check
 def order(request):
     """
@@ -30,6 +31,7 @@ def order(request):
 
     content = {'title': '提交订单', 'cart_page': 1, 'carts': carts, 'result': 0}
     return render(request, 'df_order/place_order.html', content)
+
 
 @transaction.atomic()
 @login_check

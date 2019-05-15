@@ -3,7 +3,10 @@ from django.urls import reverse
 from df_goods.models import TypeInfo, GoodsInfo
 from django.core.paginator import Paginator
 from df_cart.models import CartInfo
+from django.views.decorators.cache import cache_page
 
+
+# @cache_page(60 * 30) # 缓存首页, 半小时变动一次
 def index(request):
     """
     商品首页

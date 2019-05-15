@@ -129,6 +129,14 @@ TINYMCE_DEFAULT_CONFIG = {
     'height': 400,
 }
 
+# 设置redis缓存
+CACHES = {
+    "default": {
+        "BACKEND": "redis_cache.cache.RedisCache",
+        "LOCATION": "localhost:6379",
+        'TIMEOUT': 60,
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
