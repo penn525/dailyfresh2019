@@ -18,7 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^tinymce/', include('tinymce.urls')), # 富文本编辑器 url
+    url(r'^search/', include('haystack.urls')), # haystack url
     url(r'^user/', include('df_user.urls', namespace='user')),
     url(r'^', include('df_goods.urls', namespace='goods')),
     url(r'^cart/', include('df_cart.urls', namespace='cart')),

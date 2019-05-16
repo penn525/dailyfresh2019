@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tinymce',
+    'tinymce', # 富文本编辑器
+    'haystack', # django全文检索的包
     'df_user',
     'df_goods',
     'df_cart',
@@ -137,6 +138,20 @@ CACHES = {
         'TIMEOUT': 60,
     },
 }
+
+# 全文检索配置
+# 1. haystack 添加搜索引擎 whoosh
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine', #搜索引擎
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'), # 索引文件目录
+    }
+}
+
+# 2. 当添加, 修改, 删除数据时, 自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_DEFAULT_OPERATOR = 'OR' # 逻辑或关系
+HAYSTACK_SEARCH_RESULT_PER_PAGE = 18 # 每条些事多少条数据
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
