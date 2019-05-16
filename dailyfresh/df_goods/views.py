@@ -132,3 +132,31 @@ def list_(request, type_id, page_num, sort):
         'sort': sort}
     return render(request, 'df_goods/list.html', context)
 
+
+def cart_count(request):
+    """
+    计算购物车商品数量
+    """
+    if request.session.has_key('user_id'):
+        return CartInfo.objects.filter(user_id=request.session.get('user_id')).count()
+    else:
+        return 0
+
+
+from haystack.views import SearchView
+class GoodsSearchView(SearchView):
+    """
+    自定义haystack 返回的searchview的上下文
+    """
+    def extra_context(self):
+        """
+        自定义上下文
+        """
+        extra = super(GoodsSearchView, self).extra_context()
+
+        extra['title'] = '搜索'
+        extra['no_recommand'] = 1
+        extra['guster_page'] = 1
+        extra['count'] = cart_count(self.request)
+        # print(extra)
+        return extra

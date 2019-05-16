@@ -26,6 +26,16 @@
 	</div>
 </div>
 
+{% if no_recommand %}
+
+<div class="breadcrumb">
+	<a href="javascript:;">{{ query }}</a>
+	<span>></span>
+	<a href="javascript:;">搜索结果如下: </a>
+</div>
+
+{% else %}
+
 <div class="breadcrumb">
 	<a href="#">全部分类</a>
 	<span>></span>
@@ -36,7 +46,18 @@
 	{% endif %}
 </div>
 
+{% endif %}
+
+
+
 {% block detail %} {% endblock detail %} {% comment %} # 详情页面 {% endcomment %}
+
+{% if no_recommand %}
+{% comment %} 搜索页面, 不展示侧边的推荐栏 {% endcomment %}
+{% block search_result %}
+{% endblock search_result %}
+
+{% else %}
 
 <div class="main_wrap clearfix">
 	<div class="l_wrap fl clearfix">
@@ -54,10 +75,11 @@
 		</div>
 	</div>
 
-
 	{% block goods_right %}
     {% endblock goods_right %}
 </div>
+
+{% endif %}
 
 
 {% endblock content %}
