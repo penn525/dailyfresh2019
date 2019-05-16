@@ -55,10 +55,8 @@
 			<li><a href="{% url 'user:site' %}" {% if left == 3 %}class="active"{% endif %}>· 收货地址</a></li>
 		</ul>
 	</div>
-</div>
-{% endif %}
 
-{% if guster_page == 1 %}
+{% elif guster_page == 1 %}
 	<div class="search_bar clearfix">
 		<a href="{% url 'goods:index' %}" class="logo fl"><img src="/static/images/logo.png"></a>
 		<div class="search_con fl">
@@ -72,9 +70,8 @@
 			<div class="goods_count fl" id="show_count">{{ count }}</div>
 		</div>
 	</div>
-{% endif %}
 
-{% if cart_page == 1 %}
+{% elif cart_page == 1 %}
 	<div class="search_bar clearfix">
 		<a href="{% url 'goods:index' %}" class="logo fl"><img src="/static/images/logo.png"></a>
 		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;{{ title }}</div>
@@ -90,5 +87,5 @@
 
 {% block content %}
 {% endblock content %}
-
+</div>
 {% endblock body %}
