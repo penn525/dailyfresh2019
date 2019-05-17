@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'vgf^dg8!-2z)&di7_)z_v9f_y@+&wbn8@#1g8127dmaj(g9zfl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',] # 表示可以访问的服务器ip
 
 
 # Application definition
@@ -162,7 +162,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# 运行 python manage.py collectstatic 后, 手机静态文件到该目录
+STATIC_ROOT='/usr/local/var/www/dailyfresh/static/'
+
 # 开发阶段上传文件的目录
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 # 部署后的上传文件目录 NGINX
-# MEDIA_ROOT = 'var/www/dailyfresh/static'
+MEDIA_ROOT = '/usr/local/var/www/dailyfresh/static/media'
+
